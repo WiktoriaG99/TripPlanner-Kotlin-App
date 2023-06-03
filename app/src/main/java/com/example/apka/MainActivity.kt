@@ -58,11 +58,10 @@ class MainActivity : AppCompatActivity() {
                     intencja.putExtra("DATA_ZAKONCZENIA", item.DataZakonczenia)
                     intencja.putExtra("MIEJSCOWOSC", item.Miejscowosc)
                     intencja.putExtra("TYP_PODROZY", item.TypPodrozy)
+                    intencja.putExtra("PRZEDMIOTY", item.ListaPrzedmiotow)
                 }
                 startActivity(intencja)
             }
-
-
         }
     }
 }

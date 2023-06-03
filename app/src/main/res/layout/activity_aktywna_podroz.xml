@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".AktywnaPodroz">
 
+    <TextView
+        android:id="@+id/NazwaPodrozy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/DataRozpoczecia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy" />
+
+    <TextView
+        android:id="@+id/DataZakonczenia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia" />
+
+    <TextView
+        android:id="@+id/Miejscowosc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia" />
+
+    <TextView
+        android:id="@+id/TypPodrozy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
+
+    <ListView
+        android:id="@+id/ListaPrzedmiotow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TypPodrozy"
+        />
+
+    <Button
+        android:id="@+id/DodajPrzedmiot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListaPrzedmiotow"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
