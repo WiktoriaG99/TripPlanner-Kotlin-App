@@ -6,4 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".TworzeniePodrozy">
 
+    <EditText
+        android:id="@+id/NazwaPodrozy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nazwa podróży"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/DataRozpoczecia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data rozpoczęcia np. 01.01.2000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy"
+        />
+    <EditText
+        android:id="@+id/DataZakonczenia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data zakonczenia np. 31.01.2000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia"
+        />
+    <EditText
+        android:id="@+id/Miejscowosc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Miejscowość"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia"
+        />
+    <TextView
+        android:id="@+id/tvBiznes"
+        android:text="Biznes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc"
+        />
+
+    <Switch
+        android:id="@+id/TypPodrozy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tvBiznes"
+        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rekreacja"
+        app:layout_constraintStart_toEndOf="@+id/TypPodrozy"
+        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
+
+    <Button
+        android:id="@+id/Dalej"
+        android:text="Dalej"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TypPodrozy" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

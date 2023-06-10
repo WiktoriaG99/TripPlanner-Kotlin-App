@@ -1,30 +1,142 @@
 package com.example.apka
 
 class SpisKategorii {
+
     // Kategoria Zakwaterowanie
-    val Hotel = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Kamping = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Znajomi = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
+    var Zakwaterowanie: List<Kategoria> = mutableListOf<Kategoria>(
+
+        Kategoria(
+            "Hotel",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Kamping",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Znajomi",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        )
+    )
 
     // Kategoria Przewozy
-    val Samochod = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Samolot = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Komunikacja = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
+    var Przewozy: List<Kategoria> = mutableListOf<Kategoria>(
+        Kategoria(
+            "Samochód",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Samolot",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Komunikacja",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        )
+    )
 
     // Kategoria Zajecia/Przedmioty
-    val NiezbedneRzeczy = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    // Pamiętać o liczniku rzeczy!
-    val Ubrania = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Kosmetyki = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val SportyZimowe = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Plaża = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Festiwal = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val PieszeWycieczki = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
+    var ZajeciaPrzedmioty: List<Kategoria> = mutableListOf<Kategoria>(
+        Kategoria(
+            "Niezbędne rzeczy",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        // Pamiętać o liczniku rzeczy!
+        Kategoria(
+            "Ubrania",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Kosmetyki",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Sporty Zimowe",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Plaża",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Festiwal",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Piesze wycieczki",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        )
+    )
 
     // Kategoria Inne
-    val Niemowle = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-    val Zwierzeta = arrayOf<String>("Portfel", "Ładowarka", "Telefon")
-
-    // Kategoria Szablony
-
+    var Inne: List<Kategoria> = mutableListOf<Kategoria>(
+        Kategoria(
+            "Niemowlę",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        ),
+        Kategoria(
+            "Zwierzęta",
+            mutableListOf<Przedmiot>(
+                Przedmiot("Portfel", 1, false,false),
+                Przedmiot("Ładowarka", 1, false, false),
+                Przedmiot("Telefon", 1, false, false)
+            )
+        )
+    )
 }

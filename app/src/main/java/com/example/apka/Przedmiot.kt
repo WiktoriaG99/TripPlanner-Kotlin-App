@@ -7,11 +7,13 @@ class Przedmiot: Serializable {
     var NazwaPrzedmiotu: String = "Nowy Przedmiot"
     var Liczba: Int = 1
     var CzyZalezneOdDlugosciPodrozy: Boolean = false
+    var CzyZaznaczony:Boolean = false
 
-    constructor(Nazwa: String, Liczba: Int, CzyZalezneOdDlugosciPodrozy: Boolean)
+    constructor(Nazwa: String, Liczba: Int, CzyZalezneOdDlugosciPodrozy: Boolean, CzyZaznaczony: Boolean)
     {
         this.NazwaPrzedmiotu = Nazwa
         this.Liczba = Liczba
         this.CzyZalezneOdDlugosciPodrozy = CzyZalezneOdDlugosciPodrozy
+        this.CzyZaznaczony = CzyZaznaczony
     }
 }

@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Apka"
         tools:targetApi="31">
         <activity
+            android:name=".WybranyElement"
+            android:exported="false" />
+        <activity
+            android:name=".WyborKategorii"
+            android:exported="false" />
+        <activity
             android:name=".UtworzElement"
             android:exported="false" />
         <activity
@@ -21,13 +27,7 @@
             android:name=".Informacje"
             android:exported="false" />
         <activity
-            android:name=".OAplikacji"
-            android:exported="false" />
-        <activity
             android:name=".Ustawienia"
-            android:exported="false" />
-        <activity
-            android:name=".Szablony"
             android:exported="false" />
         <activity
             android:name=".TworzeniePodrozy"

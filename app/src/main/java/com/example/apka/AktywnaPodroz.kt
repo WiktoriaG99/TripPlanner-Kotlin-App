@@ -17,15 +17,8 @@ class AktywnaPodroz : AppCompatActivity() {
         binding = ActivityAktywnaPodrozBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Wejście w Podróż z listy Podróży z listview
-
-        //TODO - dorobić if do kazdej zmiennej, a jak nie ma to jakaś tam wartocs bazowa, zeby sie nie wysypało
         if(intent.hasExtra("NAZWA"))
         {
-           // val nazwaPodrozy= intent.getStringExtra("NAZWA")
-            // Toast.makeText(this, nazwaPodrozy, Toast.LENGTH_LONG).show();
-
-
             binding.NazwaPodrozy.text = intent.getStringExtra("NAZWA")
             binding.DataRozpoczecia.text = intent.getStringExtra("DATA_ROZPOCZECIA")
             binding.DataZakonczenia.text = intent.getStringExtra("DATA_ZAKONCZENIA")
@@ -37,7 +30,7 @@ class AktywnaPodroz : AppCompatActivity() {
             val DaneAplikacjiZmienna = DaneAplikacji()
 
             val ListaPrzedmiotow = ArrayList<String>()
-            var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[0]
+            var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[ID]
 
             for (item in DaneAplikacjiZmienna.Podroze)
             {
@@ -61,9 +54,9 @@ class AktywnaPodroz : AppCompatActivity() {
         var CzyWybrany: Boolean = false
 
         binding.ListaPrzedmiotow.setOnItemClickListener { parent, view, position, id ->
-
             if(CzyWybrany == false)
             {
+
                 view.setBackgroundColor(Color.DKGRAY)
                 CzyWybrany = true
             }
@@ -72,6 +65,14 @@ class AktywnaPodroz : AppCompatActivity() {
                 view.setBackgroundColor(Color.WHITE)
                 CzyWybrany = false
             }
+        }
+
+        binding.ListaPrzedmiotow.setOnItemLongClickListener { adapterView, view, i, l ->
+            val intencja = Intent(applicationContext, WybranyElement::class.java)
+            intencja.putExtra("NAZWA_PRZEDMIOTU", binding.ListaPrzedmiotow.getItemAtPosition(i).toString())
+            intencja.putExtra("ID_PODROZY", intent.getIntExtra("ID", 1))
+            startActivity(intencja)
+            true
         }
 
         binding.DodajPrzedmiot.setOnClickListener {

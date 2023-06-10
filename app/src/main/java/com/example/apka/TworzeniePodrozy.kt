@@ -1,7 +1,11 @@
 package com.example.apka
 
+import android.R
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.example.apka.databinding.ActivityTworzeniePodrozyBinding
 
 class TworzeniePodrozy : AppCompatActivity() {
@@ -13,6 +17,61 @@ class TworzeniePodrozy : AppCompatActivity() {
         binding = ActivityTworzeniePodrozyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Layout Tworzenie Podróże
+        var idPodrozyZmienna = 3
+        var nazwaPodrozyZmienna = ""
+        var miejscowoscZmienna = ""
+        var dataRozpoczeciaZmienna = ""
+        var dataZakonczeniaZmienna = ""
+        var typPodrozyZmienna = ""
+
+        binding.Dalej.setOnClickListener {
+
+            //ID - przewertować wszystkie id i do największego dodać 1 - to będzie ID nowej podrozy
+            nazwaPodrozyZmienna = binding.NazwaPodrozy.text.toString()
+            miejscowoscZmienna = binding.Miejscowosc.text.toString()
+            dataRozpoczeciaZmienna = binding.DataRozpoczecia.text.toString()
+            dataZakonczeniaZmienna = binding.DataZakonczenia.text.toString()
+
+            if(binding.TypPodrozy.isChecked) {
+                typPodrozyZmienna = "Biznes"
+            }
+            else{
+                typPodrozyZmienna = "Rekreacja"
+            }
+
+            if (nazwaPodrozyZmienna==""
+                || miejscowoscZmienna==""
+                || dataRozpoczeciaZmienna==""
+                || dataZakonczeniaZmienna==""
+                || typPodrozyZmienna==""){
+
+                Toast.makeText(this, "Wszystkie pola muszą zostać uzupełnione", Toast.LENGTH_LONG).show();
+            }
+            else {
+                val DaneAplikacjiZmienna = DaneAplikacji()
+                var CzyIstniejeJuzPodrozONazwie = false
+
+                for (item in DaneAplikacjiZmienna.Podroze) {
+                    if (item.Nazwa == nazwaPodrozyZmienna) {
+                        CzyIstniejeJuzPodrozONazwie = true
+                    }
+                }
+
+                if (CzyIstniejeJuzPodrozONazwie == true) {
+                    Toast.makeText(this, "Już istnieje podróż o podanej nazwie", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    val intencja = Intent(applicationContext, WyborKategorii::class.java)
+                    intencja.putExtra("ID", idPodrozyZmienna)
+                    intencja.putExtra("NAZWA", nazwaPodrozyZmienna)
+                    intencja.putExtra("DATA_ROZPOCZECIA", dataRozpoczeciaZmienna)
+                    intencja.putExtra("DATA_ZAKONCZENIA", dataZakonczeniaZmienna)
+                    intencja.putExtra("MIEJSCOWOSC", miejscowoscZmienna)
+                    intencja.putExtra("TYP_PODROZY", typPodrozyZmienna)
+                    startActivity(intencja)
+                }
+            }
+        }
     }
 }

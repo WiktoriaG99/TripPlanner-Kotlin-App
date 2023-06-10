@@ -18,7 +18,7 @@ class UtworzElement : AppCompatActivity() {
         val IDPodrozy = intent.getIntExtra("ID", 1)
 
         val DaneAplikacjiZmienna = DaneAplikacji()
-        var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[0]
+        var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[IDPodrozy]
 
         for (item in DaneAplikacjiZmienna.Podroze)
         {
@@ -29,23 +29,41 @@ class UtworzElement : AppCompatActivity() {
 
         binding.DodajPrzedmiot.setOnClickListener {
 
-            val NazwaPrzedmiotuDoDodania = binding.NazwaElementu.text.toString()
-            val LiczbaPrzedmiotuDoDodania = binding.LiczbaPrzedmiotow.text.toString()
-            val CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania = binding.CzyLiczbaZaleznaOdDlugosciPodrozy.text.toString()
+            var NazwaPrzedmiotuDoDodania = binding.NazwaElementu.text.toString()
+            //TODO zrobić to na boola
+            //var CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania = binding.CzyLiczbaZaleznaOdDlugosciPodrozy.text.toString()
+            var LiczbaPrzedmiotuDoDodania = ""
+            if(binding.CzyLiczbaZaleznaOdDlugosciPodrozy.isChecked()){
+                var CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania = false
+                LiczbaPrzedmiotuDoDodania = binding.LiczbaPrzedmiotow.text.toString()
+            }
+            else{
+                var CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania = true
+                LiczbaPrzedmiotuDoDodania = binding.LiczbaPrzedmiotow.text.toString()
+            }
 
-            val nowyPrzedmiot = Przedmiot(NazwaPrzedmiotuDoDodania, LiczbaPrzedmiotuDoDodania.toInt(), false)
-            //TODO OGARNAĆ CZEMU SIĘ NIE DODAJE
-            aktywnaPodroz.ListaPrzedmiotow.plus(nowyPrzedmiot)
+            if(NazwaPrzedmiotuDoDodania == ""
+                || LiczbaPrzedmiotuDoDodania == "") {
+                Toast.makeText(this, "Wszystkie pola muszą zostać uzupełnione", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(this, "Dodano przedmiot do listy", Toast.LENGTH_LONG).show();
+
+                var nowyPrzedmiot =
+                    Przedmiot(NazwaPrzedmiotuDoDodania, LiczbaPrzedmiotuDoDodania.toInt(), false, false)
+                //TODO OGARNAĆ CZEMU SIĘ NIE DODAJE
+                aktywnaPodroz.ListaPrzedmiotow.add(nowyPrzedmiot)
 
 
-            val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
-            intencja.putExtra("ID", intent.getIntExtra("ID", 1))
-            intencja.putExtra("NAZWA", intent.getStringExtra("NAZWA"))
-            intencja.putExtra("DATA_ROZPOCZECIA", intent.getStringExtra("DATA_ROZPOCZECIA"))
-            intencja.putExtra("DATA_ZAKONCZENIA", intent.getStringExtra("DATA_ZAKONCZENIA"))
-            intencja.putExtra("MIEJSCOWOSC", intent.getStringExtra("MIEJSCOWOSC"))
-            intencja.putExtra("TYP_PODROZY", intent.getStringExtra("TYP_PODROZY"))
-            startActivity(intencja)
+                val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+                intencja.putExtra("ID", intent.getIntExtra("ID", 1))
+                intencja.putExtra("NAZWA", intent.getStringExtra("NAZWA"))
+                intencja.putExtra("DATA_ROZPOCZECIA", intent.getStringExtra("DATA_ROZPOCZECIA"))
+                intencja.putExtra("DATA_ZAKONCZENIA", intent.getStringExtra("DATA_ZAKONCZENIA"))
+                intencja.putExtra("MIEJSCOWOSC", intent.getStringExtra("MIEJSCOWOSC"))
+                intencja.putExtra("TYP_PODROZY", intent.getStringExtra("TYP_PODROZY"))
+                startActivity(intencja)
+            }
         }
     }
 }

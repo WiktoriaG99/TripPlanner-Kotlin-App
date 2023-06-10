@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import com.example.apka.databinding.ActivityMainBinding
+import java.util.Collections.list
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -21,14 +22,7 @@ class MainActivity : AppCompatActivity() {
         val arrayAdapter: ArrayAdapter<*>
         val DaneAplikacjiZmienna = DaneAplikacji()
 
-        //val PodrozeTablica = ArrayList<Podroz>()
-
-        // TODO
-        // Dopilnować, żeby przy tworzeniu podróży nie można było
-        // stworzyć dwóch podrozy o takiej samej nazwie
-        // bo szukamy po nazwie podrozy
-        // (dać komunikat przy tworzeniu a nie error)
-        val PodrozeTablica = ArrayList<String>()
+        val PodrozeTablica = mutableListOf<String>()
 
         for (item in DaneAplikacjiZmienna.Podroze) {
             PodrozeTablica.add(item.Nazwa)
@@ -45,10 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.ListaPodrozy.setOnItemClickListener { parent, view, position, id ->
             val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
-            // TODO
-            // na podstawir nazwy  znaleźć item z tablicy Podrozy
-            // i przez put extra przeniesc dane do nastepnej aktywnosci
-            //intencja.putExtra("WYSZUKIWANE_ZWIERZE", wyszukiwaneZwierze)
 
             for (item in DaneAplikacjiZmienna.Podroze) {
                 if (item.Nazwa == ListViewPodroze.getItemAtPosition(position).toString()) {
@@ -58,10 +48,15 @@ class MainActivity : AppCompatActivity() {
                     intencja.putExtra("DATA_ZAKONCZENIA", item.DataZakonczenia)
                     intencja.putExtra("MIEJSCOWOSC", item.Miejscowosc)
                     intencja.putExtra("TYP_PODROZY", item.TypPodrozy)
-                    intencja.putExtra("PRZEDMIOTY", item.ListaPrzedmiotow)
                 }
                 startActivity(intencja)
             }
         }
+
+        binding.DodajPodroz.setOnClickListener {
+            val intencja = Intent(applicationContext, TworzeniePodrozy::class.java)
+            startActivity(intencja)
+        }
+
     }
 }
