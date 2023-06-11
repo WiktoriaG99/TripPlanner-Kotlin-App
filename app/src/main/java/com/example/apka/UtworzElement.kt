@@ -24,6 +24,7 @@ class UtworzElement : AppCompatActivity() {
         val IDPodrozy = intent.getIntExtra("ID", 1)
 
         val DaneAplikacjiZmienna = DaneAplikacji()
+        /*
         var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[IDPodrozy]
 
         var NazwaPrzedmiotuDoDodania = binding.NazwaElementu.text.toString()
@@ -95,5 +96,7 @@ class UtworzElement : AppCompatActivity() {
                 }
             }
         }
+
+         */
     }
 }

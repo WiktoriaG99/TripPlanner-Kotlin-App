@@ -20,15 +20,12 @@ class AktywnaPodroz : AppCompatActivity() {
         if(intent.hasExtra("NAZWA"))
         {
             binding.NazwaPodrozy.text = intent.getStringExtra("NAZWA")
-            binding.DataRozpoczecia.text = intent.getStringExtra("DATA_ROZPOCZECIA")
-            binding.DataZakonczenia.text = intent.getStringExtra("DATA_ZAKONCZENIA")
-            binding.Miejscowosc.text = intent.getStringExtra("MIEJSCOWOSC")
-            binding.TypPodrozy.text = intent.getStringExtra("TYP_PODROZY")
+
             val ID = intent.getIntExtra("ID", 1)
 
             val arrayAdapter: ArrayAdapter<*>
             val DaneAplikacjiZmienna = DaneAplikacji()
-
+/*
             val ListaPrzedmiotow = ArrayList<String>()
             var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[ID]
 
@@ -48,7 +45,7 @@ class AktywnaPodroz : AppCompatActivity() {
                 android.R.layout.simple_list_item_1, ListaPrzedmiotow
             )
             ListViewPrzedmioty.adapter = arrayAdapter
-
+*/
         }
 
         var CzyWybrany: Boolean = false
@@ -84,6 +81,7 @@ class AktywnaPodroz : AppCompatActivity() {
             intencja.putExtra("MIEJSCOWOSC", intent.getStringExtra("MIEJSCOWOSC"))
             intencja.putExtra("TYP_PODROZY", intent.getStringExtra("TYP_PODROZY"))
             startActivity(intencja)
+
         }
 
     }

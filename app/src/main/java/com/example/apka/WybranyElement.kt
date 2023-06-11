@@ -18,7 +18,7 @@ class WybranyElement : AppCompatActivity() {
         val DaneAplikacjiZmienna = DaneAplikacji()
         var nazwaPrzedmiotu = intent.getStringExtra("NAZWA_PRZEDMIOTU")
         binding.nazwaPrzedmiotu.setText(nazwaPrzedmiotu)
-
+/*
         binding.ZapiszZmiany.setOnClickListener {
             for (item in DaneAplikacjiZmienna.Podroze) {
                 if (item.ID == idPodrozy){
@@ -46,5 +46,7 @@ class WybranyElement : AppCompatActivity() {
             }
         }
 
+
+ */
     }
 }

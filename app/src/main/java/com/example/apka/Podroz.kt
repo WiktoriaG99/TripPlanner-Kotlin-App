@@ -8,15 +8,25 @@ class Podroz {
     var DataZakonczenia: String = "31.01.2000"
     var Miejscowosc: String? = null
     var TypPodrozy: String = "Rekreacja" //i Biznes
-    var ListaPrzedmiotow: MutableCollection<Przedmiot> = mutableListOf<Przedmiot>()
+    var ListaPrzedmiotow: MutableList<Przedmiot> = mutableListOf<Przedmiot>()
 
 
-    constructor(
-        ID: Int, Nazwa: String, DataRozpoczecia:String, DataZakonczenia:String, Miejscowosc:String, TypPodrozy:String,
-        ListaPrzedmiotow: MutableCollection<Przedmiot>
+    constructor() {
+    }
+    constructor(Nazwa: String, DataRozpoczecia:String, DataZakonczenia:String, Miejscowosc:String, TypPodrozy:String
     )
     {
-        this.ID = ID
+        this.Nazwa = Nazwa
+        this.DataRozpoczecia = DataRozpoczecia
+        this.DataZakonczenia = DataZakonczenia
+        this.Miejscowosc = Miejscowosc
+        this.TypPodrozy = TypPodrozy
+    }
+    constructor(
+        Nazwa: String, DataRozpoczecia:String, DataZakonczenia:String, Miejscowosc:String, TypPodrozy:String,
+        ListaPrzedmiotow: MutableList<Przedmiot>
+    )
+    {
         this.Nazwa = Nazwa
         this.DataRozpoczecia = DataRozpoczecia
         this.DataZakonczenia = DataZakonczenia
@@ -24,5 +34,4 @@ class Podroz {
         this.TypPodrozy = TypPodrozy
         this.ListaPrzedmiotow = ListaPrzedmiotow
     }
-
 }

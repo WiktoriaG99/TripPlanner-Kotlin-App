@@ -4,7 +4,7 @@ class SpisKategorii {
 
     // Kategoria Zakwaterowanie
     var Zakwaterowanie: List<Kategoria> = mutableListOf<Kategoria>(
-
+/*
         Kategoria(
             "Hotel",
             mutableListOf<Przedmiot>(
@@ -138,5 +138,6 @@ class SpisKategorii {
                 Przedmiot("Telefon", 1, false, false)
             )
         )
+         */
     )
 }

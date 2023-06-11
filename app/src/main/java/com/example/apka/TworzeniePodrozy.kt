@@ -17,7 +17,6 @@ class TworzeniePodrozy : AppCompatActivity() {
         binding = ActivityTworzeniePodrozyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var idPodrozyZmienna = 3
         var nazwaPodrozyZmienna = ""
         var miejscowoscZmienna = ""
         var dataRozpoczeciaZmienna = ""
@@ -26,7 +25,6 @@ class TworzeniePodrozy : AppCompatActivity() {
 
         binding.Dalej.setOnClickListener {
 
-            //ID - przewertować wszystkie id i do największego dodać 1 - to będzie ID nowej podrozy
             nazwaPodrozyZmienna = binding.NazwaPodrozy.text.toString()
             miejscowoscZmienna = binding.Miejscowosc.text.toString()
             dataRozpoczeciaZmienna = binding.DataRozpoczecia.text.toString()
@@ -42,8 +40,7 @@ class TworzeniePodrozy : AppCompatActivity() {
             if (nazwaPodrozyZmienna==""
                 || miejscowoscZmienna==""
                 || dataRozpoczeciaZmienna==""
-                || dataZakonczeniaZmienna==""
-                || typPodrozyZmienna==""){
+                || dataZakonczeniaZmienna==""){
 
                 Toast.makeText(this, "Wszystkie pola muszą zostać uzupełnione", Toast.LENGTH_LONG).show();
             }
@@ -51,19 +48,19 @@ class TworzeniePodrozy : AppCompatActivity() {
                 val DaneAplikacjiZmienna = DaneAplikacji()
                 var CzyIstniejeJuzPodrozONazwie = false
 
+                /*
                 for (item in DaneAplikacjiZmienna.Podroze) {
                     if (item.Nazwa == nazwaPodrozyZmienna) {
                         CzyIstniejeJuzPodrozONazwie = true
                     }
                 }
-
+                */
                 if (CzyIstniejeJuzPodrozONazwie == true) {
                     Toast.makeText(this, "Już istnieje podróż o podanej nazwie", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                     val intencja = Intent(applicationContext, WyborKategorii::class.java)
-                    intencja.putExtra("ID", idPodrozyZmienna)
                     intencja.putExtra("NAZWA", nazwaPodrozyZmienna)
                     intencja.putExtra("DATA_ROZPOCZECIA", dataRozpoczeciaZmienna)
                     intencja.putExtra("DATA_ZAKONCZENIA", dataZakonczeniaZmienna)
