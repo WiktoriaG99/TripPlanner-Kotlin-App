@@ -1,5 +1,7 @@
 package com.example.apka
 
+//TODO Do usunięcia
+
 class SpisKategorii {
 
     // Kategoria Zakwaterowanie

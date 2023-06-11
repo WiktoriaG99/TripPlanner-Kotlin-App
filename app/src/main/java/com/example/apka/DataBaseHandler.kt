@@ -32,7 +32,7 @@ val TABLE_NAME_KATEGORIA = "Kategoria"
 val COL_ID_KATEGORIA = "id_kategoria"
 val COL_NAZWA_KATEGORIA  = "nazwa"
 
-val TABLE_NAME_KATEGORIA_PRZEDMIOT = "KATEGORIA_Przedmiot"
+val TABLE_NAME_KATEGORIA_PRZEDMIOT = "Kategoria_Przedmiot"
 val COL_ID_KATEGORIA_KATEGORIA_PRZEDMIOT = "id_kategoria"
 val COL_ID_PRZEDMIOT_KATEGORIA_PRZEDMIOT= "id_przedmiot"
 
@@ -153,6 +153,28 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         return list
     }
 
+    fun readDataPodrozByName(nazwa: String) : Podroz{
+        var podroz: Podroz = Podroz()
+
+        val db = this.readableDatabase
+        val query = "Select * from " + TABLE_NAME_PODROZE + " WHERE " + COL_NAZWA_PODROZ + "= '" + nazwa + "'"
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                podroz.ID = result.getString(0).toInt()
+                podroz.Nazwa = result.getString(1)
+                podroz.DataRozpoczecia = result.getString(2)
+                podroz.DataZakonczenia = result.getString(3)
+                podroz.Miejscowosc = result.getString(4)
+                podroz.TypPodrozy = result.getString(5)
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+        return podroz
+    }
+
     fun readDataIDPodroz(nazwa:String): Int{
         var ID = 0
         val db = this.readableDatabase
@@ -181,6 +203,29 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         if(result.moveToFirst()){
             do {
                 list.add(result.getString(0).toInt())
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+        return list
+    }
+
+    fun readDataPrzedmiotyPodrozy(id_podroz: Int): MutableList<String>{
+        var list: MutableList<String> = ArrayList()
+
+        val db = this.readableDatabase
+
+        val query = "SELECT " + TABLE_NAME_PRZEDMIOTY + "." + COL_NAZWA_PRZEDMIOT +
+                " FROM " + TABLE_NAME_PRZEDMIOTY +
+                " INNER JOIN " + TABLE_NAME_PODROZ_PRZEDMIOT +
+                " ON " + TABLE_NAME_PRZEDMIOTY + "." + COL_ID_PRZEDMIOT + "=" + TABLE_NAME_PODROZ_PRZEDMIOT + "." + COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT +
+                " WHERE " + TABLE_NAME_PODROZ_PRZEDMIOT + "." + COL_ID_PODROZ_PODROZ_PRZEDMIOT + "=" + id_podroz
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                list.add(result.getString(0))
             }while (result.moveToNext())
         }
         result.close()

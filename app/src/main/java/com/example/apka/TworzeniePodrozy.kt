@@ -45,10 +45,12 @@ class TworzeniePodrozy : AppCompatActivity() {
                 Toast.makeText(this, "Wszystkie pola muszą zostać uzupełnione", Toast.LENGTH_LONG).show();
             }
             else {
-                val DaneAplikacjiZmienna = DaneAplikacji()
+
                 var CzyIstniejeJuzPodrozONazwie = false
 
+                //TODO przez sql
                 /*
+                 val DaneAplikacjiZmienna = DaneAplikacji()
                 for (item in DaneAplikacjiZmienna.Podroze) {
                     if (item.Nazwa == nazwaPodrozyZmienna) {
                         CzyIstniejeJuzPodrozONazwie = true

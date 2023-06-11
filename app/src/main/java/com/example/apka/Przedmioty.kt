@@ -1,5 +1,6 @@
 package com.example.apka
 
+//TODO Do usunięcia
 class Przedmioty {
     /*
     public var TablicaPrzedmiotow = mutableListOf<Przedmiot>(

@@ -1,5 +1,7 @@
 package com.example.apka
 
+//TODO Do usunięcia
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.apka.databinding.ActivityTworzeniePodrozyBinding
