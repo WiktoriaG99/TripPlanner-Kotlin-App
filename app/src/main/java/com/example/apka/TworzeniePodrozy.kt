@@ -31,10 +31,10 @@ class TworzeniePodrozy : AppCompatActivity() {
             dataZakonczeniaZmienna = binding.DataZakonczenia.text.toString()
 
             if(binding.TypPodrozy.isChecked) {
-                typPodrozyZmienna = "Biznes"
+                typPodrozyZmienna = "Rekreacja"
             }
             else{
-                typPodrozyZmienna = "Rekreacja"
+                typPodrozyZmienna = "Biznes"
             }
 
             if (nazwaPodrozyZmienna==""
