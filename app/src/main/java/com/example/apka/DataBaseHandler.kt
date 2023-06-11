@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-val DATABASE_NAME = "MyDB"
+val DATABASE_NAME = "MyDB3"
 
 val TABLE_NAME_PODROZE = "Podroze"
 val COL_ID_PODROZ = "id_podroz"
@@ -56,43 +56,20 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
                 COL_CZY_ZABRANY_PRZEDMIOT + " INTEGER)";
         db?.execSQL(createTablePrzedmioty)
 
-        var przedmiot = Przedmiot()
-        przedmiot = Przedmiot("Samochód", "Kluczyki", 1, 0, 0)
-        insertDataPrzedmiot(przedmiot)
-        przedmiot = Przedmiot("Samochód", "Prawo jazdy", 1, 0, 0)
-        insertDataPrzedmiot(przedmiot)
-
         val createTableKategorie = "CREATE TABLE " + TABLE_NAME_KATEGORIA + " (" +
                 COL_ID_KATEGORIA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COL_NAZWA_KATEGORIA + " VARCHAR(256))";
         db?.execSQL(createTableKategorie)
-
-        var kategoria = Kategoria()
-        kategoria = Kategoria("Samochód")
-        insertDataKategoria(kategoria)
-        kategoria = Kategoria("Samolot")
-        insertDataKategoria(kategoria)
-        kategoria = Kategoria("Komunikacja publiczna")
-        insertDataKategoria(kategoria)
 
         val createTableKategoriaPrzedmiot = "CREATE TABLE " + TABLE_NAME_KATEGORIA_PRZEDMIOT + " (" +
                 COL_ID_KATEGORIA_KATEGORIA_PRZEDMIOT + " INTEGER," +
                 COL_ID_PRZEDMIOT_KATEGORIA_PRZEDMIOT + " INTEGER)";
         db?.execSQL(createTableKategoriaPrzedmiot)
 
-        var kategoriaPrzedmiot = KategoriaPrzedmiot()
-        kategoriaPrzedmiot = KategoriaPrzedmiot(1, 1)
-        insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
-        kategoriaPrzedmiot = KategoriaPrzedmiot(1, 2)
-        insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
-        kategoriaPrzedmiot = KategoriaPrzedmiot(1, 3)
-        insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
-
         val createTablePodrozPrzedmiot = "CREATE TABLE " + TABLE_NAME_PODROZ_PRZEDMIOT + " (" +
                 COL_ID_PODROZ_PODROZ_PRZEDMIOT + " INTEGER," +
                 COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT + " INTEGER)";
         db?.execSQL(createTablePodrozPrzedmiot)
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -139,16 +116,16 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         val db = this.writableDatabase
         var cv = ContentValues()
         cv.put(COL_ID_KATEGORIA_KATEGORIA_PRZEDMIOT, kategoriaPrzedmiot.ID_Kategoria)
-        cv.put(COL_NAZWA_KATEGORIA, kategoriaPrzedmiot.ID_Przedmiot)
+        cv.put(COL_ID_PRZEDMIOT_KATEGORIA_PRZEDMIOT, kategoriaPrzedmiot.ID_Przedmiot)
         db.insert(TABLE_NAME_KATEGORIA_PRZEDMIOT, null, cv)
     }
 
-    fun insertDataPodrozPrzedmiot(podroz: Podroz, przedmiot: Przedmiot)
+    fun insertDataPodrozPrzedmiot(id_podroz: Int, id_przedmiot: Int)
     {
         val db = this.writableDatabase
         var cv = ContentValues()
-        cv.put(COL_ID_PODROZ_PODROZ_PRZEDMIOT, podroz.ID)
-        cv.put(COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT, przedmiot.ID)
+        cv.put(COL_ID_PODROZ_PODROZ_PRZEDMIOT, id_podroz)
+        cv.put(COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT, id_przedmiot)
         db.insert(TABLE_NAME_PODROZ_PRZEDMIOT, null, cv)
     }
 
@@ -187,7 +164,28 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
             ID = result.getString(0).toInt()
             }while (result.moveToNext())
         }
+        result.close()
+        db.close()
         return ID
+    }
+
+    fun readDataPrzedmiotyzKategorii(nazwa: String): MutableList<Int>{
+        var list: MutableList<Int> = ArrayList()
+
+        val db = this.readableDatabase
+
+        val query = "Select " + COL_ID_PRZEDMIOT + " from " + TABLE_NAME_PRZEDMIOTY + " WHERE " + COL_KATEGORIA_PRZEDMIOT + "='" + nazwa +"'"
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                list.add(result.getString(0).toInt())
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+        return list
     }
 
 }

@@ -17,9 +17,50 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val db = DataBaseHandler(this)
+
+        //TODO - to tu nie moze być bo się tworzy za każdym wejściem w main activity,
+        //TODO - ale w databasehandler nie działa i nw co z tym zrobić
+        //-----------------------------------------------------------------------------------
+
+        var przedmiot = Przedmiot()
+        przedmiot = Przedmiot("Samochód", "Kluczyki", 1, 0, 0)
+        db.insertDataPrzedmiot(przedmiot)
+        przedmiot = Przedmiot("Samochód", "Prawo jazdy", 1, 0, 0)
+        db.insertDataPrzedmiot(przedmiot)
+        przedmiot = Przedmiot("Samolot", "Poduszka", 1, 0, 0)
+        db.insertDataPrzedmiot(przedmiot)
+        przedmiot = Przedmiot("Samolot", "Paszport", 1, 0, 0)
+        db.insertDataPrzedmiot(przedmiot)
+        przedmiot = Przedmiot("Komunikacja publiczna", "Legitymacja", 1, 0, 0)
+        db.insertDataPrzedmiot(przedmiot)
+
+        // Transport
+        var kategoria = Kategoria()
+        kategoria = Kategoria("Samochód")
+        db.insertDataKategoria(kategoria)
+        kategoria = Kategoria("Samolot")
+        db.insertDataKategoria(kategoria)
+        kategoria = Kategoria("Komunikacja publiczna")
+        db.insertDataKategoria(kategoria)
+
+        var kategoriaPrzedmiot = KategoriaPrzedmiot()
+        kategoriaPrzedmiot = KategoriaPrzedmiot(1, 1)
+        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        kategoriaPrzedmiot = KategoriaPrzedmiot(1, 2)
+        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        kategoriaPrzedmiot = KategoriaPrzedmiot(2, 3)
+        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        kategoriaPrzedmiot = KategoriaPrzedmiot(2, 4)
+        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        kategoriaPrzedmiot = KategoriaPrzedmiot(3, 5)
+        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+
+        //-----------------------------------------------------------------------------------
+
         val arrayAdapter: ArrayAdapter<*>
 
-        val db = DataBaseHandler(this)
+
         var data = db.readDataPodroz()
 
         val PodrozeTablica = mutableListOf<String>()

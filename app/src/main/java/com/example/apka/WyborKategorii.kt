@@ -45,13 +45,13 @@ class WyborKategorii : AppCompatActivity() {
         ListViewTransport.setOnItemClickListener { parent, view, position, id ->
                 if(CzyWybrany == false)
                 {
-                    WybraneKategorie.add(position.toString())
+                    WybraneKategorie.add(ListViewTransport.getItemAtPosition(position).toString())
                     view.setBackgroundColor(Color.DKGRAY)
                     CzyWybrany = true
                 }
                 else
                 {
-                    WybraneKategorie.remove(position.toString())
+                    WybraneKategorie.remove(ListViewTransport.getItemAtPosition(position).toString())
                     view.setBackgroundColor(Color.WHITE)
                     CzyWybrany = false
                 }
@@ -130,17 +130,23 @@ class WyborKategorii : AppCompatActivity() {
 
                 db.insertDataPodroz(podrozDoBazy)
 
+                if(WybraneKategorie.size!=0) {
 
-                //TODO dodanie kategorii i przedmiotow z niej
+                    var id_podrozy = db.readDataIDPodroz(nazwaNowejPodrozy)
 
-                //pobranie wszystkich przedmiotow z kategorii i przypisanie ich do tablicy
+                    val db = DataBaseHandler(this)
 
-                var ID_podrozy = db.readDataIDPodroz(nazwaNowejPodrozy)
+                    for (kategoria in WybraneKategorie) {
 
+                        Toast.makeText(this, kategoria, Toast.LENGTH_SHORT).show()
+                        var data = db.readDataPrzedmiotyzKategorii(kategoria)
 
-
-
-                Toast.makeText(this, "Dodano podróż", Toast.LENGTH_LONG).show();
+                        for (i in 0..(data.size - 1)) {
+                            db.insertDataPodrozPrzedmiot(id_podrozy, data.get(i))
+                        }
+                    }
+                }
+                //Toast.makeText(this, "Dodano podróż", Toast.LENGTH_LONG).show();
                 val intencja = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intencja)
             }
