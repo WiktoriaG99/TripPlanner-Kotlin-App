@@ -1,5 +1,7 @@
 package com.example.apka
 
+// Klasa dla tabeli wiele do wielu
+// Kategoria - Przedmiot
 class KategoriaPrzedmiot {
     var ID_Kategoria: Int = 0
     var ID_Przedmiot: Int = 0

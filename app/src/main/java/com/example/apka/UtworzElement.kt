@@ -23,7 +23,7 @@ class UtworzElement : AppCompatActivity() {
 
         val IDPodrozy = intent.getIntExtra("ID", 1)
 
-        val DaneAplikacjiZmienna = DaneAplikacji()
+        //val DaneAplikacjiZmienna = DaneAplikacji()
         /*
         var aktywnaPodroz: Podroz = DaneAplikacjiZmienna.Podroze[IDPodrozy]
 
@@ -81,7 +81,7 @@ class UtworzElement : AppCompatActivity() {
                             false
                         )
 
-                    //TODO OGARNAĆ CZEMU SIĘ NIE DODAJE aaaaaaaaaaaaaaaa
+
                     aktywnaPodroz.ListaPrzedmiotow.add(nowyPrzedmiot)
 
 

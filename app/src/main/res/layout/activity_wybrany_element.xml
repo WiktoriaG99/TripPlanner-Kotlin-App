@@ -15,13 +15,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Switch
+        android:id="@+id/CzyLiczbaZaleznaOdDlugosciPodrozy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Czy liczba przedmiotów ma być zależna od długości podróży?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nazwaPrzedmiotu" />
+
+    <EditText
+        android:id="@+id/LiczbaPrzedmiotow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Wprowadź liczbę..."
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CzyLiczbaZaleznaOdDlugosciPodrozy" />
+
     <Button
         android:id="@+id/ZapiszZmiany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zapisz"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nazwaPrzedmiotu" />
+        app:layout_constraintTop_toBottomOf="@+id/LiczbaPrzedmiotow" />
 
     <Button
         android:id="@+id/UsunPrzedmiot"
@@ -29,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Usuń"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nazwaPrzedmiotu" />
+        app:layout_constraintStart_toEndOf="@+id/ZapiszZmiany"
+        app:layout_constraintTop_toBottomOf="@+id/LiczbaPrzedmiotow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

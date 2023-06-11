@@ -18,7 +18,6 @@ class WyborKategorii : AppCompatActivity() {
         binding = ActivityWyborKategoriiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val DaneAplikacjiZmienna = SpisKategorii()
 
         var WybraneKategorie : MutableList<String> = mutableListOf<String>()
 
@@ -57,6 +56,7 @@ class WyborKategorii : AppCompatActivity() {
                 }
         }
 
+        // TODO - resztę kategorii
 /*
         // Kategoria - Zakwaterowanie
         val arrayAdapterZakwaterowanie: ArrayAdapter<*>

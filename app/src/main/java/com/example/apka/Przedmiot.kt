@@ -13,6 +13,15 @@ class Przedmiot: Serializable {
     constructor()
     {
     }
+    constructor(Id: Int, Kategoria: String, Nazwa: String, Liczba: Int, CzyZalezneOdDlugosciPodrozy: Int, CzyZaznaczony: Int)
+    {
+        this.ID = Id
+        this.Kategoria = Kategoria
+        this.NazwaPrzedmiotu = Nazwa
+        this.Liczba = Liczba
+        this.CzyZalezneOdDlugosciPodrozy = CzyZalezneOdDlugosciPodrozy
+        this.CzyZaznaczony = CzyZaznaczony
+    }
     constructor(Kategoria: String, Nazwa: String, Liczba: Int, CzyZalezneOdDlugosciPodrozy: Int, CzyZaznaczony: Int)
     {
         this.Kategoria = Kategoria

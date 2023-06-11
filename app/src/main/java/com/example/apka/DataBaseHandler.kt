@@ -128,7 +128,6 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         cv.put(COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT, id_przedmiot)
         db.insert(TABLE_NAME_PODROZ_PRZEDMIOT, null, cv)
     }
-
     fun readDataPodroz() : MutableList<Podroz>{
         var list: MutableList<Podroz> = ArrayList()
 
@@ -195,9 +194,7 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         var list: MutableList<Int> = ArrayList()
 
         val db = this.readableDatabase
-
         val query = "Select " + COL_ID_PRZEDMIOT + " from " + TABLE_NAME_PRZEDMIOTY + " WHERE " + COL_KATEGORIA_PRZEDMIOT + "='" + nazwa +"'"
-
         val result = db.rawQuery(query, null)
 
         if(result.moveToFirst()){
@@ -231,6 +228,42 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         result.close()
         db.close()
         return list
+    }
+
+    fun readDataPrzedmiot(nazwa: String?): Przedmiot{
+        var przedmiot = Przedmiot()
+        val db = this.readableDatabase
+        val query = "Select * from " + TABLE_NAME_PRZEDMIOTY + " WHERE " + COL_NAZWA_PRZEDMIOT + "='" + nazwa + "'"
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                przedmiot.ID = result.getString(0).toInt()
+                przedmiot.Kategoria = result.getString(1)
+                przedmiot.NazwaPrzedmiotu = result.getString(2)
+                przedmiot.Liczba = result.getString(3).toInt()
+                przedmiot.CzyZalezneOdDlugosciPodrozy = result.getString(4).toInt()
+                przedmiot.CzyZaznaczony = result.getString(5).toInt()
+
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+        return przedmiot
+    }
+
+    fun updateDataPrzedmiot(przedmiot: Przedmiot){
+        val db = writableDatabase
+        var cv = ContentValues()
+        cv.put(COL_KATEGORIA_PRZEDMIOT, przedmiot.Kategoria)
+        cv.put(COL_NAZWA_PRZEDMIOT, przedmiot.NazwaPrzedmiotu)
+        cv.put(COL_LICZBA_PRZEDMIOT, przedmiot.Liczba)
+        cv.put(COL_CZY_ZALEZNY_OD_DLUGOSCI_PODROZY, przedmiot.CzyZalezneOdDlugosciPodrozy)
+        cv.put(COL_CZY_ZABRANY_PRZEDMIOT, przedmiot.CzyZaznaczony)
+        var where = COL_ID_PRZEDMIOT + "=" + przedmiot.ID
+
+        db.update(TABLE_NAME_PRZEDMIOTY, cv, where, null)
+        db.close()
     }
 
 }
