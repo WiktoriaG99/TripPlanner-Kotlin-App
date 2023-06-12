@@ -63,8 +63,6 @@ class WyborKategorii : AppCompatActivity() {
         KategoriaZajeciaPrzedmiotyTablica.add("Kosmetyki")
         KategoriaZajeciaPrzedmiotyTablica.add("Sporty zimowe")
         KategoriaZajeciaPrzedmiotyTablica.add("Plaża")
-        KategoriaZajeciaPrzedmiotyTablica.add("Festiwal")
-        KategoriaZajeciaPrzedmiotyTablica.add("Piesze wycieczki")
 
 
         var ListViewZajeciaPrzedmioty = binding.lvZajeciaPrzedmioty
@@ -75,36 +73,51 @@ class WyborKategorii : AppCompatActivity() {
         ListViewZajeciaPrzedmioty.adapter = arrayAdapterZajeciaPrzedmioty
 
 
-        // Kategoria - Inne
-        val arrayInnePrzedmioty: ArrayAdapter<*>
-        val KategoriaInneTablica = ArrayList<String>()
-
-        KategoriaInneTablica.add("Dziecko")
-        KategoriaInneTablica.add("Zwierzę")
-
-        var ListViewInne = binding.lvInne
-        arrayInnePrzedmioty = ArrayAdapter(
-            this,
-            R.layout.simple_list_item_1, KategoriaInneTablica
-        )
-        ListViewInne.adapter = arrayInnePrzedmioty
-
-
         var CzyWybrany: Boolean = false
 
-        ListViewTransport.setOnItemClickListener { parent, view, position, id ->
+        ListViewZakwaterowanie.setOnItemClickListener { parent, view, position, id ->
                 if(CzyWybrany == false)
                 {
-                    WybraneKategorie.add(ListViewTransport.getItemAtPosition(position).toString())
+                    WybraneKategorie.add(ListViewZakwaterowanie.getItemAtPosition(position).toString())
                     view.setBackgroundColor(Color.DKGRAY)
                     CzyWybrany = true
                 }
                 else
                 {
-                    WybraneKategorie.remove(ListViewTransport.getItemAtPosition(position).toString())
+                    WybraneKategorie.remove(ListViewZakwaterowanie.getItemAtPosition(position).toString())
                     view.setBackgroundColor(Color.WHITE)
                     CzyWybrany = false
                 }
+        }
+
+        ListViewTransport.setOnItemClickListener { parent, view, position, id ->
+            if(CzyWybrany == false)
+            {
+                WybraneKategorie.add(ListViewTransport.getItemAtPosition(position).toString())
+                view.setBackgroundColor(Color.DKGRAY)
+                CzyWybrany = true
+            }
+            else
+            {
+                WybraneKategorie.remove(ListViewTransport.getItemAtPosition(position).toString())
+                view.setBackgroundColor(Color.WHITE)
+                CzyWybrany = false
+            }
+        }
+
+        ListViewZajeciaPrzedmioty.setOnItemClickListener { parent, view, position, id ->
+            if(CzyWybrany == false)
+            {
+                WybraneKategorie.add(ListViewZajeciaPrzedmioty.getItemAtPosition(position).toString())
+                view.setBackgroundColor(Color.DKGRAY)
+                CzyWybrany = true
+            }
+            else
+            {
+                WybraneKategorie.remove(ListViewZajeciaPrzedmioty.getItemAtPosition(position).toString())
+                view.setBackgroundColor(Color.WHITE)
+                CzyWybrany = false
+            }
         }
 
         binding.DodajPodroz.setOnClickListener {
@@ -115,7 +128,8 @@ class WyborKategorii : AppCompatActivity() {
             var dataZakonczeniaNowejPodrozy = intent.getStringExtra("DATA_ZAKONCZENIA").toString()
             var typNowejPodrozy = intent.getStringExtra("TYP_PODROZY").toString()
 
-            val db = DataBaseHandler(this)
+            var context = this
+            val db = DataBaseHandler(context)
 
             if(nazwaNowejPodrozy!=null && miejscowoscNowejPodrozy!=null && dataRozpoczeciaNowejPodrozy!=null
                 && dataZakonczeniaNowejPodrozy!=null) {

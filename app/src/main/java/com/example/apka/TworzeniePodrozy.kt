@@ -1,10 +1,8 @@
 package com.example.apka
 
-import android.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.apka.databinding.ActivityTworzeniePodrozyBinding
 

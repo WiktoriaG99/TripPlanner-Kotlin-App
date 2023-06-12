@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.apka.databinding.ActivityMainBinding
 import com.example.apka.databinding.ActivityUtworzElementBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
