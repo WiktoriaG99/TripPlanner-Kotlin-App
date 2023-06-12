@@ -53,7 +53,7 @@ class UtworzElement : AppCompatActivity() {
                 CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania = 0
                 LiczbaPrzedmiotuDoDodania = binding.LiczbaPrzedmiotow.text.toString().toInt()
             }
-
+        }
             binding.DodajPrzedmiot.setOnClickListener {
                 NazwaPrzedmiotuDoDodania = binding.NazwaElementu.text.toString()
                 LiczbaPrzedmiotuDoDodania = binding.LiczbaPrzedmiotow.text.toString().toInt()
@@ -89,7 +89,6 @@ class UtworzElement : AppCompatActivity() {
                     intencja.putExtra("NAZWA", intent.getStringExtra("NAZWA"))
                     startActivity(intencja)
                 }
-            }
         }
     }
 }

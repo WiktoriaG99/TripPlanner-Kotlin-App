@@ -56,12 +56,14 @@ class AktywnaPodroz : AppCompatActivity() {
             binding.ListaPrzedmiotow.setOnItemClickListener { parent, view, position, id ->
                 if(CzyWybrany == false)
                 {
+                    //TODO
                     //zmienić jego property czy zaznaczony na true
                     view.setBackgroundColor(Color.DKGRAY)
                     CzyWybrany = true
                 }
                 else
                 {
+                    //TODO
                     //zmienić jego property czy zaznaczony na false
                     view.setBackgroundColor(Color.WHITE)
                     CzyWybrany = false

@@ -60,7 +60,7 @@ class WybranyElement : AppCompatActivity() {
                 data.CzyZalezneOdDlugosciPodrozy = 0
                 data.Liczba = binding.LiczbaPrzedmiotow.text.toString().toInt()
             }
-
+        }
             binding.ZapiszZmiany.setOnClickListener {
 
                 data.NazwaPrzedmiotu = binding.nazwaPrzedmiotu.text.toString()
@@ -76,15 +76,19 @@ class WybranyElement : AppCompatActivity() {
                 )
                 db.updateDataPrzedmiot(przedmiot)
                 Toast.makeText(this, "Zapisano zmiany", Toast.LENGTH_SHORT).show()
-                val intencja = Intent(applicationContext, MainActivity::class.java)
+                val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+                intencja.putExtra("NAZWA", nazwaPodrozy)
+
                 startActivity(intencja)
             }
-            //TODO
             binding.UsunPrzedmiot.setOnClickListener {
                 Toast.makeText(this, "Usunięto przedmiot", Toast.LENGTH_SHORT).show()
-                val intencja = Intent(applicationContext, MainActivity::class.java)
+                db.deleteDataPrzedmiot(data.ID.toInt())
+                val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+                intencja.putExtra("NAZWA", nazwaPodrozy)
+
                 startActivity(intencja)
             }
-        }
+
     }
 }

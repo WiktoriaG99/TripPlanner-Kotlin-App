@@ -265,4 +265,13 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         db.update(TABLE_NAME_PRZEDMIOTY, cv, where, null)
         db.close()
     }
+
+    fun deleteDataPrzedmiot(id: Int){
+        val db = writableDatabase
+        var where = COL_ID_PRZEDMIOT + "=" + id
+        db.delete(TABLE_NAME_PRZEDMIOTY, where, null)
+        where = COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT + "=" + id
+        db.delete(TABLE_NAME_PODROZ_PRZEDMIOT, where, null)
+        db.close()
+    }
 }
