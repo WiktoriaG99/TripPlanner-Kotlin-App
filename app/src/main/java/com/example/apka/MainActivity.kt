@@ -16,42 +16,67 @@ class MainActivity : AppCompatActivity() {
 
         val db = DataBaseHandler(this)
 
-        //TODO - to tu nie moze być bo się tworzy za każdym wejściem w main activity,
-        //TODO - ale w databasehandler nie działa i nw co z tym zrobić
+        //TODO - dodać resztę, może przenieść do innego pliku?
         //-----------------------------------------------------------------------------------
 
-        var przedmiot = Przedmiot()
-        przedmiot = Przedmiot("Samochód", "Kluczyki", 1, 0, 0)
-        db.insertDataPrzedmiot(przedmiot)
+        var przedmiot = Przedmiot() // - inicjalizacja obiektu
+        przedmiot = Przedmiot("Samochód", "Kluczyki", 1, 0, 0) // - dane obiektu
+        var result = db.readDataCzyPrzedmiotnaLiscie(przedmiot.NazwaPrzedmiotu) // - result jako wynik z bazy czy już coś istnieje takiego (o takiej nazwie)
+        if(result.toInt()==0) // - jeżeli nie istnieje w bazie (czyli 0) - to można dodać do bazy
+            db.insertDataPrzedmiot(przedmiot) // - dodanie obiektu do bazy
         przedmiot = Przedmiot("Samochód", "Prawo jazdy", 1, 0, 0)
-        db.insertDataPrzedmiot(przedmiot)
+        result = db.readDataCzyPrzedmiotnaLiscie(przedmiot.NazwaPrzedmiotu)
+        if(result.toInt()==0)
+            db.insertDataPrzedmiot(przedmiot)
         przedmiot = Przedmiot("Samolot", "Poduszka", 1, 0, 0)
-        db.insertDataPrzedmiot(przedmiot)
+        result = db.readDataCzyPrzedmiotnaLiscie(przedmiot.NazwaPrzedmiotu)
+        if(result.toInt()==0)
+            db.insertDataPrzedmiot(przedmiot)
         przedmiot = Przedmiot("Samolot", "Paszport", 1, 0, 0)
-        db.insertDataPrzedmiot(przedmiot)
+        result = db.readDataCzyPrzedmiotnaLiscie(przedmiot.NazwaPrzedmiotu)
+        if(result.toInt()==0)
+            db.insertDataPrzedmiot(przedmiot)
         przedmiot = Przedmiot("Komunikacja publiczna", "Legitymacja", 1, 0, 0)
-        db.insertDataPrzedmiot(przedmiot)
+        result = db.readDataCzyPrzedmiotnaLiscie(przedmiot.NazwaPrzedmiotu)
+        if(result.toInt()==0)
+            db.insertDataPrzedmiot(przedmiot)
 
         // Transport
         var kategoria = Kategoria()
         kategoria = Kategoria("Samochód")
-        db.insertDataKategoria(kategoria)
+        result = db.readDataCzyKategoriaNaLiscie(kategoria.Nazwa)
+        if(result.toInt()==0)
+            db.insertDataKategoria(kategoria)
         kategoria = Kategoria("Samolot")
-        db.insertDataKategoria(kategoria)
+        result = db.readDataCzyKategoriaNaLiscie(kategoria.Nazwa)
+        if(result.toInt()==0)
+            db.insertDataKategoria(kategoria)
         kategoria = Kategoria("Komunikacja publiczna")
-        db.insertDataKategoria(kategoria)
+        result = db.readDataCzyKategoriaNaLiscie(kategoria.Nazwa)
+        if(result.toInt()==0)
+            db.insertDataKategoria(kategoria)
 
         var kategoriaPrzedmiot = KategoriaPrzedmiot()
         kategoriaPrzedmiot = KategoriaPrzedmiot(1, 1)
-        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        result = db.readDataCzyKategoriaPrzedmiotNaLiscie(kategoriaPrzedmiot.ID_Kategoria, kategoriaPrzedmiot.ID_Przedmiot)
+        if(result.toInt()==0)
+            db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
         kategoriaPrzedmiot = KategoriaPrzedmiot(1, 2)
-        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        result = db.readDataCzyKategoriaPrzedmiotNaLiscie(kategoriaPrzedmiot.ID_Kategoria, kategoriaPrzedmiot.ID_Przedmiot)
+        if(result.toInt()==0)
+            db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
         kategoriaPrzedmiot = KategoriaPrzedmiot(2, 3)
-        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        result = db.readDataCzyKategoriaPrzedmiotNaLiscie(kategoriaPrzedmiot.ID_Kategoria, kategoriaPrzedmiot.ID_Przedmiot)
+        if(result.toInt()==0)
+            db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
         kategoriaPrzedmiot = KategoriaPrzedmiot(2, 4)
-        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        result = db.readDataCzyKategoriaPrzedmiotNaLiscie(kategoriaPrzedmiot.ID_Kategoria, kategoriaPrzedmiot.ID_Przedmiot)
+        if(result.toInt()==0)
+            db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
         kategoriaPrzedmiot = KategoriaPrzedmiot(3, 5)
-        db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
+        result = db.readDataCzyKategoriaPrzedmiotNaLiscie(kategoriaPrzedmiot.ID_Kategoria, kategoriaPrzedmiot.ID_Przedmiot)
+        if(result.toInt()==0)
+            db.insertDataKategoriaPrzedmiot(kategoriaPrzedmiot)
 
         //-----------------------------------------------------------------------------------
 

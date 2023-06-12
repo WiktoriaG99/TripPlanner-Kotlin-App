@@ -24,6 +24,21 @@ class WyborKategorii : AppCompatActivity() {
         val context = this
         var db = DataBaseHandler(context)
 
+        // Kategoria - Zakwaterowanie
+        val arrayAdapterZakwaterowanie: ArrayAdapter<*>
+        val KategoriaZakwaterowanieTablica = ArrayList<String>()
+
+        KategoriaZakwaterowanieTablica.add("Hotel")
+        KategoriaZakwaterowanieTablica.add("Kamping")
+        KategoriaZakwaterowanieTablica.add("Bliscy")
+
+        var ListViewZakwaterowanie = binding.lvZakwaterowanie
+        arrayAdapterZakwaterowanie = ArrayAdapter(
+            this,
+            R.layout.simple_list_item_1, KategoriaZakwaterowanieTablica
+        )
+        ListViewZakwaterowanie.adapter = arrayAdapterZakwaterowanie
+
         // Kategoria - Transport
         val arrayAdapterTransport: ArrayAdapter<*>
         val KategoriaTransportTablica = ArrayList<String>()
@@ -38,6 +53,42 @@ class WyborKategorii : AppCompatActivity() {
             R.layout.simple_list_item_1, KategoriaTransportTablica
         )
         ListViewTransport.adapter = arrayAdapterTransport
+
+        // Kategoria - Zajecia/Przedmioty
+        val arrayAdapterZajeciaPrzedmioty: ArrayAdapter<*>
+        val KategoriaZajeciaPrzedmiotyTablica = ArrayList<String>()
+
+        KategoriaZajeciaPrzedmiotyTablica.add("Niezbędne rzeczy")
+        KategoriaZajeciaPrzedmiotyTablica.add("Ubrania")
+        KategoriaZajeciaPrzedmiotyTablica.add("Kosmetyki")
+        KategoriaZajeciaPrzedmiotyTablica.add("Sporty zimowe")
+        KategoriaZajeciaPrzedmiotyTablica.add("Plaża")
+        KategoriaZajeciaPrzedmiotyTablica.add("Festiwal")
+        KategoriaZajeciaPrzedmiotyTablica.add("Piesze wycieczki")
+
+
+        var ListViewZajeciaPrzedmioty = binding.lvZajeciaPrzedmioty
+        arrayAdapterZajeciaPrzedmioty = ArrayAdapter(
+            this,
+            R.layout.simple_list_item_1, KategoriaZajeciaPrzedmiotyTablica
+        )
+        ListViewZajeciaPrzedmioty.adapter = arrayAdapterZajeciaPrzedmioty
+
+
+        // Kategoria - Inne
+        val arrayInnePrzedmioty: ArrayAdapter<*>
+        val KategoriaInneTablica = ArrayList<String>()
+
+        KategoriaInneTablica.add("Dziecko")
+        KategoriaInneTablica.add("Zwierzę")
+
+        var ListViewInne = binding.lvInne
+        arrayInnePrzedmioty = ArrayAdapter(
+            this,
+            R.layout.simple_list_item_1, KategoriaInneTablica
+        )
+        ListViewInne.adapter = arrayInnePrzedmioty
+
 
         var CzyWybrany: Boolean = false
 
@@ -55,57 +106,6 @@ class WyborKategorii : AppCompatActivity() {
                     CzyWybrany = false
                 }
         }
-
-        // TODO - resztę kategorii
-/*
-        // Kategoria - Zakwaterowanie
-        val arrayAdapterZakwaterowanie: ArrayAdapter<*>
-        val KategoriaZakwaterowanieTablica = ArrayList<String>()
-
-
-
-        for (item in DaneAplikacjiZmienna.Zakwaterowanie) {
-            KategoriaZakwaterowanieTablica.add(item.Nazwa)
-        }
-
-        var ListViewZakwaterowanie = binding.lvZakwaterowanie
-        arrayAdapterZakwaterowanie = ArrayAdapter(
-            this,
-            R.layout.simple_list_item_1, KategoriaZakwaterowanieTablica
-        )
-        ListViewZakwaterowanie.adapter = arrayAdapterZakwaterowanie
-
-        // Kategoria - Zajecia/Przedmioty
-        val arrayAdapterZajeciaPrzedmioty: ArrayAdapter<*>
-        val KategoriaZajeciaPrzedmiotyTablica = ArrayList<String>()
-
-        for (item in DaneAplikacjiZmienna.ZajeciaPrzedmioty) {
-            KategoriaZajeciaPrzedmiotyTablica.add(item.Nazwa)
-        }
-
-        var ListViewZajeciaPrzedmioty = binding.lvZajeciaPrzedmioty
-        arrayAdapterZajeciaPrzedmioty = ArrayAdapter(
-            this,
-            R.layout.simple_list_item_1, KategoriaZajeciaPrzedmiotyTablica
-        )
-        ListViewZajeciaPrzedmioty.adapter = arrayAdapterZajeciaPrzedmioty
-
-        // Kategoria - Inne
-        val arrayInnePrzedmioty: ArrayAdapter<*>
-        val KategoriaInneTablica = ArrayList<String>()
-
-        for (item in DaneAplikacjiZmienna.Inne) {
-            KategoriaInneTablica.add(item.Nazwa)
-        }
-
-        var ListViewInne = binding.lvInne
-        arrayInnePrzedmioty = ArrayAdapter(
-            this,
-            R.layout.simple_list_item_1, KategoriaInneTablica
-        )
-        ListViewInne.adapter = arrayInnePrzedmioty
-
-         */
 
         binding.DodajPodroz.setOnClickListener {
 
@@ -146,7 +146,7 @@ class WyborKategorii : AppCompatActivity() {
                         }
                     }
                 }
-                //Toast.makeText(this, "Dodano podróż", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Dodano podróż", Toast.LENGTH_LONG).show();
                 val intencja = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intencja)
             }

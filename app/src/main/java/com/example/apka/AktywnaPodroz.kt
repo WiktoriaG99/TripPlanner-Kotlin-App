@@ -57,6 +57,7 @@ class AktywnaPodroz : AppCompatActivity() {
             )
             ListViewPrzedmioty.adapter = arrayAdapter
 
+            // Zmiana koloru przedmiotów, które są zaznaczone jako zabrane
             for(i in 0..ListViewPrzedmioty.count-1)
             {
                 var nazwa_Przedmiotu = ListViewPrzedmioty.getItemAtPosition(i).toString()
@@ -92,6 +93,7 @@ class AktywnaPodroz : AppCompatActivity() {
                 val intencja = Intent(applicationContext, WybranyElement::class.java)
                 intencja.putExtra("NAZWA_PRZEDMIOTU", binding.ListaPrzedmiotow.getItemAtPosition(i).toString())
                 intencja.putExtra("NAZWA", aktywnaPodroz.Nazwa)
+                intencja.putExtra("ID", aktywnaPodroz.ID)
                 intencja.putExtra("DATA_ROZPOCZECIA", aktywnaPodroz.DataRozpoczecia)
                 intencja.putExtra("DATA_ZAKONCZENIA", aktywnaPodroz.DataZakonczenia)
                 startActivity(intencja)
@@ -106,7 +108,12 @@ class AktywnaPodroz : AppCompatActivity() {
                 intencja.putExtra("DATA_ROZPOCZECIA", aktywnaPodroz.DataRozpoczecia)
                 intencja.putExtra("DATA_ZAKONCZENIA", aktywnaPodroz.DataZakonczenia)
                 startActivity(intencja)
-
+            }
+            binding.UsunPodroz.setOnClickListener {
+                db.deleteDataPodroz(aktywnaPodroz.ID)
+                Toast.makeText(this, "Usunięto podróż", Toast.LENGTH_SHORT).show()
+                val intencja = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intencja)
             }
         }
     }

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-val DATABASE_NAME = "MyDB4"
+val DATABASE_NAME = "MyDB6"
 
 val TABLE_NAME_PODROZE = "Podroze"
 val COL_ID_PODROZ = "id_podroz"
@@ -275,6 +275,67 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         return czyZabrany
     }
 
+    fun readDataCzyPrzedmiotnaLiscie(nazwa: String):Int{
+        var czyIstnieje = 0
+        val db = this.readableDatabase
+        val query = "SELECT " + COL_NAZWA_PRZEDMIOT +
+                " FROM " + TABLE_NAME_PRZEDMIOTY +
+                " WHERE " + COL_NAZWA_PRZEDMIOT + "='" + nazwa + "'"
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                czyIstnieje = 1
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+
+        return czyIstnieje
+    }
+
+
+    fun readDataCzyKategoriaNaLiscie(nazwa:String):Int{
+        var czyIstnieje = 0
+        val db = this.readableDatabase
+        val query = "SELECT " + COL_NAZWA_KATEGORIA +
+                " FROM " + TABLE_NAME_KATEGORIA +
+                " WHERE " + COL_NAZWA_KATEGORIA + "='" + nazwa + "'"
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                czyIstnieje = 1
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+
+        return czyIstnieje
+    }
+    fun readDataCzyKategoriaPrzedmiotNaLiscie(kategoria:Int, przedmiot: Int):Int{
+        var czyIstnieje = 0
+        val db = this.readableDatabase
+        val query = "SELECT " + COL_ID_KATEGORIA_KATEGORIA_PRZEDMIOT +
+                " FROM " + TABLE_NAME_KATEGORIA_PRZEDMIOT +
+                " WHERE " + COL_ID_KATEGORIA_KATEGORIA_PRZEDMIOT + "=" + kategoria + " AND " +
+                COL_ID_PRZEDMIOT_KATEGORIA_PRZEDMIOT + "=" + przedmiot
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                czyIstnieje = 1
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+
+        return czyIstnieje
+    }
+
     fun updateDataPrzedmiot(przedmiot: Przedmiot){
         val db = writableDatabase
         var cv = ContentValues()
@@ -305,6 +366,13 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         db.delete(TABLE_NAME_PRZEDMIOTY, where, null)
         where = COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT + "=" + id
         db.delete(TABLE_NAME_PODROZ_PRZEDMIOT, where, null)
+        db.close()
+    }
+
+    fun deleteDataPodroz(id:Int){
+        val db = writableDatabase
+        var where = COL_ID_PODROZ + "=" + id
+        db.delete(TABLE_NAME_PODROZE, where, null)
         db.close()
     }
 }

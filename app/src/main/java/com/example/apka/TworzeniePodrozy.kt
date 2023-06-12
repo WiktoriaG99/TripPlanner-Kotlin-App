@@ -17,6 +17,8 @@ class TworzeniePodrozy : AppCompatActivity() {
         binding = ActivityTworzeniePodrozyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val db = DataBaseHandler(this)
+
         var nazwaPodrozyZmienna = ""
         var miejscowoscZmienna = ""
         var dataRozpoczeciaZmienna = ""
@@ -48,15 +50,16 @@ class TworzeniePodrozy : AppCompatActivity() {
 
                 var CzyIstniejeJuzPodrozONazwie = false
 
-                //TODO przez sql
-                /*
-                 val DaneAplikacjiZmienna = DaneAplikacji()
-                for (item in DaneAplikacjiZmienna.Podroze) {
-                    if (item.Nazwa == nazwaPodrozyZmienna) {
-                        CzyIstniejeJuzPodrozONazwie = true
-                    }
+                // Pobranie danych o Podróży o wprwaodzonej nazwie
+                // Jeżeli takiej Podróży nie ma - tworzy się obiekt o wartościach wprowadzonych w klasie Podróź
+                var data = db.readDataPodrozByName(nazwaPodrozyZmienna)
+
+                // Pusty string to domyślna Nazwa dla Podróż z klasy Podróż
+                if (data.Nazwa!="")
+                {
+                    CzyIstniejeJuzPodrozONazwie = true
                 }
-                */
+
                 if (CzyIstniejeJuzPodrozONazwie == true) {
                     Toast.makeText(this, "Już istnieje podróż o podanej nazwie", Toast.LENGTH_LONG).show();
                 }

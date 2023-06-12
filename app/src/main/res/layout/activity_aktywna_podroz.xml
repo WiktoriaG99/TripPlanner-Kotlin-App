@@ -58,5 +58,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListaPrzedmiotow"
         />
+    <Button
+        android:id="@+id/UsunPodroz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuń podróż"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DodajPrzedmiot"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

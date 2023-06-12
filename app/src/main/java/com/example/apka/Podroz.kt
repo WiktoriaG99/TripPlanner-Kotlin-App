@@ -3,7 +3,7 @@ package com.example.apka
 class Podroz {
 
     var ID: Int = 0
-    var Nazwa: String = "Nowa podróż"
+    var Nazwa: String = ""
     var DataRozpoczecia: String = "01.01.2000"
     var DataZakonczenia: String = "31.01.2000"
     var Miejscowosc: String? = null

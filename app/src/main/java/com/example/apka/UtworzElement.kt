@@ -68,27 +68,52 @@ class UtworzElement : AppCompatActivity() {
                     ).show();
                 }
                 else {
+                    var pobranePrzedmioty = db.readDataPrzedmiotyPodrozy(intent.getIntExtra("ID", 0))
+                    val PrzedmiotyLista = mutableListOf<String>()
 
-                    //TODO - sprawdzenie czy przedmiot o tej nazwie już nie znajduje sie w podrozy
+                    var ilePrzedmiotowOTejNazwie = 0
 
-                    Toast.makeText(this, "Dodano nowy przedmiot", Toast.LENGTH_LONG).show();
+                    // Dodanie nazw przedmiotów do listy
+                    for (i in 0..(pobranePrzedmioty.size - 1)) {
+                        PrzedmiotyLista.add(pobranePrzedmioty.get(i))
+                    }
 
-                    var nowyPrzedmiot =
-                        Przedmiot(
-                            NazwaPrzedmiotuDoDodania,
-                            LiczbaPrzedmiotuDoDodania,
-                            CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania,
-                            czyZaznaczony
-                        )
+                    // Sprawdzenie czy znajdują się już przedmioty o tej nazwie
+                    if(PrzedmiotyLista.size!=0) {
 
-                    db.insertDataPrzedmiot(nowyPrzedmiot)
-                    var przedmiot = db.readDataPrzedmiot(NazwaPrzedmiotuDoDodania)
-                    db.insertDataPodrozPrzedmiot(intent.getIntExtra("ID",1),przedmiot.ID)
+                        for (i in 0..PrzedmiotyLista.size - 1) {
+                            if (PrzedmiotyLista[i] == NazwaPrzedmiotuDoDodania) {
+                                ilePrzedmiotowOTejNazwie += 1
+                            }
+                        }
+                    }
 
-                    val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
-                    intencja.putExtra("NAZWA", intent.getStringExtra("NAZWA"))
-                    startActivity(intencja)
+                    // Jeżeli nie ma przedmiotów o podanej nazwie
+                    if(ilePrzedmiotowOTejNazwie==0) {
+                        Toast.makeText(this, "Dodano nowy przedmiot", Toast.LENGTH_LONG).show();
+
+                        var nowyPrzedmiot =
+                            Przedmiot(
+                                NazwaPrzedmiotuDoDodania,
+                                LiczbaPrzedmiotuDoDodania,
+                                CzyLiczbaZaleznaOdDlugosciPodrozyDoDodania,
+                                czyZaznaczony
+                            )
+
+                        db.insertDataPrzedmiot(nowyPrzedmiot)
+                        var przedmiot = db.readDataPrzedmiot(NazwaPrzedmiotuDoDodania)
+                        db.insertDataPodrozPrzedmiot(intent.getIntExtra("ID", 1), przedmiot.ID)
+
+                        val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+                        intencja.putExtra("NAZWA", intent.getStringExtra("NAZWA"))
+                        startActivity(intencja)
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Już istnieje przedmiot o takiej nazwie", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
         }
     }
 }
