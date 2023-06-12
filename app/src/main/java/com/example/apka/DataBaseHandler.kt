@@ -252,6 +252,29 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         return przedmiot
     }
 
+    fun readDataCzyPrzedmiotZabrany(nazwa:String, id_podroz: Int): Int {
+        var czyZabrany = 0
+        val db = this.readableDatabase
+        val query = "SELECT " + TABLE_NAME_PRZEDMIOTY + "." + COL_CZY_ZABRANY_PRZEDMIOT +
+                " FROM " + TABLE_NAME_PRZEDMIOTY +
+                " INNER JOIN " + TABLE_NAME_PODROZ_PRZEDMIOT +
+                " ON " + TABLE_NAME_PRZEDMIOTY + "." + COL_ID_PRZEDMIOT + "=" + TABLE_NAME_PODROZ_PRZEDMIOT + "." + COL_ID_PRZEDMIOT_PODROZ_PRZEDMIOT +
+                " WHERE " + TABLE_NAME_PODROZ_PRZEDMIOT + "." + COL_ID_PODROZ_PODROZ_PRZEDMIOT + "=" + id_podroz + " AND " +
+                TABLE_NAME_PRZEDMIOTY + "." + COL_NAZWA_PRZEDMIOT + "='" + nazwa + "'"
+
+        val result = db.rawQuery(query, null)
+
+        if(result.moveToFirst()){
+            do {
+                czyZabrany = result.getString(0).toInt()
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+
+        return czyZabrany
+    }
+
     fun updateDataPrzedmiot(przedmiot: Przedmiot){
         val db = writableDatabase
         var cv = ContentValues()
@@ -261,6 +284,16 @@ class DataBaseHandler(var context: Context): SQLiteOpenHelper(context, DATABASE_
         cv.put(COL_CZY_ZALEZNY_OD_DLUGOSCI_PODROZY, przedmiot.CzyZalezneOdDlugosciPodrozy)
         cv.put(COL_CZY_ZABRANY_PRZEDMIOT, przedmiot.CzyZaznaczony)
         var where = COL_ID_PRZEDMIOT + "=" + przedmiot.ID
+
+        db.update(TABLE_NAME_PRZEDMIOTY, cv, where, null)
+        db.close()
+    }
+
+    fun updateDataPrzedmiotZabrany(nazwa: String, czyZabrany: Int){
+        val db = writableDatabase
+        var cv = ContentValues()
+        cv.put(COL_CZY_ZABRANY_PRZEDMIOT, czyZabrany)
+        var where = COL_NAZWA_PRZEDMIOT + "='" + nazwa +"'"
 
         db.update(TABLE_NAME_PRZEDMIOTY, cv, where, null)
         db.close()

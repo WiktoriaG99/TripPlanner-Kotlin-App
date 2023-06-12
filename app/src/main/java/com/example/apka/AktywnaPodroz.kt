@@ -4,7 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.core.view.get
+import androidx.core.view.size
 import com.example.apka.databinding.ActivityAktywnaPodrozBinding
 
 class AktywnaPodroz : AppCompatActivity() {
@@ -23,6 +27,8 @@ class AktywnaPodroz : AppCompatActivity() {
         {
             // Pobranie informacji o danej podróży do zmiennej
             var aktywnaPodroz = db.readDataPodrozByName(intent.getStringExtra("NAZWA").toString())
+
+            val idPodrozy = aktywnaPodroz.ID
 
             // Przypisanie do elementów aktywności danych o podróży
             binding.NazwaPodrozy.text = aktywnaPodroz.Nazwa
@@ -51,20 +57,31 @@ class AktywnaPodroz : AppCompatActivity() {
             )
             ListViewPrzedmioty.adapter = arrayAdapter
 
+            for(i in 0..ListViewPrzedmioty.count-1)
+            {
+                var nazwa_Przedmiotu = ListViewPrzedmioty.getItemAtPosition(i).toString()
+                var data = db.readDataCzyPrzedmiotZabrany(nazwa_Przedmiotu, idPodrozy)
+                if (data.toInt() == 1)
+                {
+                    //TODO - if przedmiot o danej nazwie w sql ma czyZaznaczony==1 to wtedy zmiana koloru itemu
+                    //ListViewPrzedmioty.adapter.getView(i, ListViewPrzedmioty, ListViewPrzedmioty).setBackgroundColor(Color.DKGRAY)
+                    //ListViewPrzedmioty[i].setBackgroundColor(Color.DKGRAY)
+                }
+
+            }
+
             // Klikanie/odklikanie przedmiotów
             var CzyWybrany: Boolean = false
             binding.ListaPrzedmiotow.setOnItemClickListener { parent, view, position, id ->
                 if(CzyWybrany == false)
                 {
-                    //TODO
-                    //zmienić jego property czy zaznaczony na true
+                    db.updateDataPrzedmiotZabrany(binding.ListaPrzedmiotow.getItemAtPosition(id.toInt()).toString(),1)
                     view.setBackgroundColor(Color.DKGRAY)
                     CzyWybrany = true
                 }
                 else
                 {
-                    //TODO
-                    //zmienić jego property czy zaznaczony na false
+                    db.updateDataPrzedmiotZabrany(binding.ListaPrzedmiotow.getItemAtPosition(id.toInt()).toString(),0)
                     view.setBackgroundColor(Color.WHITE)
                     CzyWybrany = false
                 }

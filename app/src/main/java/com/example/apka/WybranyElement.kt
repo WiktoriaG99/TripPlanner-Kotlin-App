@@ -27,6 +27,7 @@ class WybranyElement : AppCompatActivity() {
         var data = db.readDataPrzedmiot(nazwaPrzedmiotu)
 
         binding.nazwaPrzedmiotu.setText(nazwaPrzedmiotu)
+
         if(data.CzyZalezneOdDlugosciPodrozy==1) {
             binding.CzyLiczbaZaleznaOdDlugosciPodrozy.isChecked = true
             binding.LiczbaPrzedmiotow.setEnabled(false);
@@ -35,6 +36,16 @@ class WybranyElement : AppCompatActivity() {
         else{
             binding.CzyLiczbaZaleznaOdDlugosciPodrozy.isChecked = false
         }
+
+        if(data.CzyZaznaczony==1)
+        {
+            binding.CzyZabranyPrzedmiot.isChecked = true
+        }
+        else
+        {
+            binding.CzyZabranyPrzedmiot.isChecked = false
+        }
+
         binding.LiczbaPrzedmiotow.setText(data.Liczba.toString())
 
         binding.CzyLiczbaZaleznaOdDlugosciPodrozy.setOnCheckedChangeListener { _, isChecked ->
@@ -61,34 +72,43 @@ class WybranyElement : AppCompatActivity() {
                 data.Liczba = binding.LiczbaPrzedmiotow.text.toString().toInt()
             }
         }
-            binding.ZapiszZmiany.setOnClickListener {
 
-                data.NazwaPrzedmiotu = binding.nazwaPrzedmiotu.text.toString()
-                data.Liczba = binding.LiczbaPrzedmiotow.text.toString().toInt()
-
-                var przedmiot = Przedmiot(
-                    data.ID,
-                    data.Kategoria,
-                    data.NazwaPrzedmiotu,
-                    data.Liczba,
-                    data.CzyZalezneOdDlugosciPodrozy,
-                    data.CzyZaznaczony
-                )
-                db.updateDataPrzedmiot(przedmiot)
-                Toast.makeText(this, "Zapisano zmiany", Toast.LENGTH_SHORT).show()
-                val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
-                intencja.putExtra("NAZWA", nazwaPodrozy)
-
-                startActivity(intencja)
+        binding.CzyZabranyPrzedmiot.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked){
+                data.CzyZaznaczony = 1
             }
-            binding.UsunPrzedmiot.setOnClickListener {
-                Toast.makeText(this, "Usunięto przedmiot", Toast.LENGTH_SHORT).show()
-                db.deleteDataPrzedmiot(data.ID.toInt())
-                val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
-                intencja.putExtra("NAZWA", nazwaPodrozy)
-
-                startActivity(intencja)
+            else{
+                data.CzyZaznaczony = 0
             }
+        }
 
+        binding.ZapiszZmiany.setOnClickListener {
+
+            data.NazwaPrzedmiotu = binding.nazwaPrzedmiotu.text.toString()
+            data.Liczba = binding.LiczbaPrzedmiotow.text.toString().toInt()
+
+            var przedmiot = Przedmiot(
+                data.ID,
+                data.Kategoria,
+                data.NazwaPrzedmiotu,
+                data.Liczba,
+                data.CzyZalezneOdDlugosciPodrozy,
+                data.CzyZaznaczony
+            )
+            db.updateDataPrzedmiot(przedmiot)
+            Toast.makeText(this, "Zapisano zmiany", Toast.LENGTH_SHORT).show()
+            val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+            intencja.putExtra("NAZWA", nazwaPodrozy)
+
+            startActivity(intencja)
+        }
+        binding.UsunPrzedmiot.setOnClickListener {
+            Toast.makeText(this, "Usunięto przedmiot", Toast.LENGTH_SHORT).show()
+            db.deleteDataPrzedmiot(data.ID.toInt())
+            val intencja = Intent(applicationContext, AktywnaPodroz::class.java)
+            intencja.putExtra("NAZWA", nazwaPodrozy)
+
+            startActivity(intencja)
+        }
     }
 }
