@@ -17,7 +17,10 @@
         android:id="@+id/DodajPodroz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
+        android:background="@drawable/button_bg"
+        android:text="+ DODAJ PODRÓŻ"
+        android:layout_marginTop="14dp"
+        android:layout_marginHorizontal="90dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

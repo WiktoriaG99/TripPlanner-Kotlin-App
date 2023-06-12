@@ -10,6 +10,8 @@
         android:id="@+id/NazwaPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -17,6 +19,8 @@
         android:id="@+id/DataRozpoczecia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy" />
 
@@ -24,6 +28,8 @@
         android:id="@+id/DataZakonczenia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia" />
 
@@ -31,6 +37,8 @@
         android:id="@+id/Miejscowosc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia" />
 
@@ -38,6 +46,8 @@
         android:id="@+id/TypPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
 
@@ -46,6 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:smoothScrollbar="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TypPodrozy"
         />
@@ -54,7 +66,10 @@
         android:id="@+id/DodajPrzedmiot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="14dp"
+        android:layout_marginHorizontal="90dp"
+        android:text="+ Dodaj element"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListaPrzedmiotow"
         />
@@ -62,6 +77,9 @@
         android:id="@+id/UsunPodroz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="90dp"
         android:text="Usuń podróż"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DodajPrzedmiot"

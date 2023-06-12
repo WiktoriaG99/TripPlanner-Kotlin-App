@@ -10,35 +10,44 @@
         android:id="@+id/NazwaElementu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         android:hint="Wprowadź nazwę przedmiotu..."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/CzyLiczbaZaleznaOdDlugosciPodrozy"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         android:text="Czy liczba przedmiotów ma być zależna od długości podróży?"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NazwaElementu" />
 
     <EditText
         android:id="@+id/LiczbaPrzedmiotow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="71dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:hint="Wprowadź liczbę..."
-        android:text="1"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CzyLiczbaZaleznaOdDlugosciPodrozy"
-/>
+        android:text="1"
+        app:layout_constraintStart_toEndOf="@+id/CzyLiczbaZaleznaOdDlugosciPodrozy"
+        app:layout_constraintTop_toBottomOf="@+id/NazwaElementu" />
 
     <Button
         android:id="@+id/DodajPrzedmiot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="90dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
         android:text="Dodaj przedmiot"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LiczbaPrzedmiotow" />
 

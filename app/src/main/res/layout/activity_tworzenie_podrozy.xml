@@ -10,6 +10,7 @@
         android:id="@+id/NazwaPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Nazwa podróży"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,6 +19,7 @@
         android:id="@+id/DataRozpoczecia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Data rozpoczęcia dd-MM-yyyy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy"
@@ -26,6 +28,7 @@
         android:id="@+id/DataZakonczenia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Data zakonczenia dd-MM-yyyy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia"
@@ -34,6 +37,7 @@
         android:id="@+id/Miejscowosc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Miejscowość"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia"
@@ -43,6 +47,9 @@
         android:text="Biznes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="80dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc"
         />
@@ -51,12 +58,17 @@
         android:id="@+id/TypPodrozy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/tvBiznes"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
         android:text="Rekreacja"
         app:layout_constraintStart_toEndOf="@+id/TypPodrozy"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
@@ -64,8 +76,11 @@
     <Button
         android:id="@+id/Dalej"
         android:text="Dalej"
+        android:background="@drawable/button_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="90dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TypPodrozy" />
 
