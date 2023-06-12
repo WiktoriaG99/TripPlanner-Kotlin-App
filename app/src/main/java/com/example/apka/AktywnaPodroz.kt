@@ -73,6 +73,8 @@ class AktywnaPodroz : AppCompatActivity() {
                 val intencja = Intent(applicationContext, WybranyElement::class.java)
                 intencja.putExtra("NAZWA_PRZEDMIOTU", binding.ListaPrzedmiotow.getItemAtPosition(i).toString())
                 intencja.putExtra("NAZWA", aktywnaPodroz.Nazwa)
+                intencja.putExtra("DATA_ROZPOCZECIA", aktywnaPodroz.DataRozpoczecia)
+                intencja.putExtra("DATA_ZAKONCZENIA", aktywnaPodroz.DataZakonczenia)
                 startActivity(intencja)
                 true
             }
@@ -81,6 +83,9 @@ class AktywnaPodroz : AppCompatActivity() {
             binding.DodajPrzedmiot.setOnClickListener {
                 val intencja = Intent(applicationContext, UtworzElement::class.java)
                 intencja.putExtra("NAZWA", aktywnaPodroz.Nazwa)
+                intencja.putExtra("ID", aktywnaPodroz.ID)
+                intencja.putExtra("DATA_ROZPOCZECIA", aktywnaPodroz.DataRozpoczecia)
+                intencja.putExtra("DATA_ZAKONCZENIA", aktywnaPodroz.DataZakonczenia)
                 startActivity(intencja)
 
             }
