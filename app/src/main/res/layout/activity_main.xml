@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/name"
     tools:context=".MainActivity">
+
 
     <ListView
         android:id="@+id/ListaPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DodajPodroz"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/DodajPodroz" />
+
     <Button
         android:id="@+id/DodajPodroz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:text="+ DODAJ PODRÓŻ"
-        android:layout_marginTop="14dp"
         android:layout_marginHorizontal="90dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="#FFFFFF"
+        android:hapticFeedbackEnabled="false"
+        android:text="+ DODAJ PODRÓŻ"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

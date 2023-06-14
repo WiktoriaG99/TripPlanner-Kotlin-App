@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/name"
     tools:context=".TworzeniePodrozy">
+
 
     <EditText
         android:id="@+id/NazwaPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@color/name"
         android:hint="Nazwa podróży"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/DataRozpoczecia"
@@ -22,8 +26,8 @@
         android:layout_marginTop="20dp"
         android:hint="Data rozpoczęcia dd-MM-yyyy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy" />
+
     <EditText
         android:id="@+id/DataZakonczenia"
         android:layout_width="match_parent"
@@ -31,8 +35,8 @@
         android:layout_marginTop="20dp"
         android:hint="Data zakonczenia dd-MM-yyyy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia" />
+
     <EditText
         android:id="@+id/Miejscowosc"
         android:layout_width="match_parent"
@@ -40,19 +44,18 @@
         android:layout_marginTop="20dp"
         android:hint="Miejscowość"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia" />
+
     <TextView
         android:id="@+id/tvBiznes"
-        android:text="Biznes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="20dp"
+        android:text="Biznes"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
 
     <Switch
         android:id="@+id/TypPodrozy"
@@ -66,21 +69,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="30dp"
-        android:textSize="20dp"
+        android:layout_marginTop="20dp"
         android:text="Rekreacja"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/TypPodrozy"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
 
     <Button
         android:id="@+id/Dalej"
-        android:text="Dalej"
-        android:background="@drawable/button_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="90dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:text="Dalej"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TypPodrozy" />
 

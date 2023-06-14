@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/name"
     tools:context=".AktywnaPodroz">
 
     <TextView
         android:id="@+id/NazwaPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,8 +20,8 @@
         android:id="@+id/DataRozpoczecia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NazwaPodrozy" />
 
@@ -28,8 +29,8 @@
         android:id="@+id/DataZakonczenia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataRozpoczecia" />
 
@@ -37,8 +38,8 @@
         android:id="@+id/Miejscowosc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DataZakonczenia" />
 
@@ -46,8 +47,8 @@
         android:id="@+id/TypPodrozy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Miejscowosc" />
 
@@ -55,34 +56,32 @@
         android:id="@+id/ListaPrzedmiotow"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:smoothScrollbar="true"
-        android:layout_marginTop="5dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:smoothScrollbar="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TypPodrozy"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/TypPodrozy" />
 
     <Button
         android:id="@+id/DodajPrzedmiot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="90dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_bg"
         android:text="+ Dodaj element"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListaPrzedmiotow"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/ListaPrzedmiotow" />
+
     <Button
         android:id="@+id/UsunPodroz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:layout_marginTop="4dp"
         android:layout_marginHorizontal="90dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/button_bg"
         android:text="Usuń podróż"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DodajPrzedmiot"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/DodajPrzedmiot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
